@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Horizontal con Logo y Efecto de Luces</title>
+    <style>
+
+	body {
+	background-color: black;
+	}
+
+        .neon-container {
+            position: relative;
+            background-color: #000;
+            padding: 10px;
+        }
+
+        .neon-line {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #ff69b4, #00bfff);
+            background-size: 200% 100%;
+            animation: changeColor 10s ease-in-out infinite;
+        }
+
+        .menu-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: transparent; /* Eliminar el fondo del contenedor */
+            position: relative;
+            z-index: 10;
+        }
+
+        .neon-logo {
+            margin-right: auto;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .neon-logo img {
+            width: 150px; /* Ajusta el tamaño del logo según sea necesario */
+            height: auto;
+            box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff69b4; /* Contorno con sombras de luz rosa neón */
+            border-radius: 10%; /* Hacer el logo circular, opcional */
+        }
+
+        .menu-wrapper .neon-menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .menu-wrapper .neon-menu li {
+            position: relative;
+        }
+
+        .menu-wrapper .neon-menu a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border-radius: 20px; /* Hacer los bordes ovalados */
+            font-size: 1.2em; /* Tamaño de letra más grande para todos los botones */
+        }
+
+        .menu-wrapper .neon-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.3s;
+            border-radius: 20px; /* Hacer los bordes ovalados */
+            z-index: -1;
+            opacity: 0;
+        }
+
+        .menu-wrapper .neon-menu a:hover::before {
+            opacity: 1;
+        }
+
+        .menu-wrapper .neon-menu li:nth-child(n+1) a:hover {
+            color: #fff; /* Texto blanco al pasar el cursor */
+            transform: scale(1.05); /* Zoom al pasar el cursor */
+            box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 40px #00bfff; /* Efecto de iluminación azul neon */
+        }
+
+        .menu-wrapper .neon-submenu-items {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: transparent;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+	    font-size: 10px;
+            z-index: 1000;
+        }
+
+        .menu-wrapper .neon-submenu:hover .neon-submenu-items {
+            display: block;
+        }
+
+        /* Estilos específicos para el botón 5 */
+        .menu-wrapper .neon-menu li:nth-child(5) a {
+            background-color: #6a1b9a; /* Púrpura oscuro */
+            color: #fff; /* Texto blanco */
+        }
+
+        .menu-wrapper .neon-menu li:nth-child(5) a::before {
+            background-color: rgba(255, 192, 203, 0.2); /* Rosa pastel para el contorno */
+        }
+
+        .menu-wrapper .neon-menu li:nth-child(5) a:hover {
+            border-color: #ffc0cb; /* Color del borde al pasar el cursor */
+            box-shadow: 0 0 10px #ffc0cb, 0 0 20px #ffc0cb, 0 0 40px #ffc0cb; /* Efecto de contorno neon */
+        }
+
+        /* Animación para cambiar el color de la línea */
+        @keyframes changeColor {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 100% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Aquí puedes agregar otros contenidos del body -->
+
+    <div class="neon-container">
+        <div class="neon-line"></div>
+        <div class="menu-wrapper">
+            <div class="neon-logo">
+                <img src="logo.png" alt="Logo"> <!-- Reemplaza "logo.png" con la ruta de tu logo -->
+            </div>
+            <ul class="menu-wrapper neon-menu">
+                <li><a href="pagina1.html">Botón 1</a></li>
+                <li class="neon-submenu">
+                    <a href="#">Botón 2</a>
+                    <ul class="neon-submenu-items">
+                        <li><a href="opcion1.html">Opción 1</a></li>
+                        <li><a href="opcion2.html">Opción 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="pagina3.html">Botón 3</a></li>
+                <li><a href="pagina4.html">Botón 4</a></li>
+                <li><a href="pagina5.html">Botón 5</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Aquí puedes agregar otros contenidos del body -->
+</body>
+</html>

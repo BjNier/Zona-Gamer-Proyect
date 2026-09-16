@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Imágenes</title>
+    <style>
+        .my-gallery-container {
+            font-family: Arial, sans-serif;
+            background-color: BLACK;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .my-gallery-container .gallery-container {
+            position: relative;
+            max-width: 800px;
+            margin: 20px auto;
+            overflow: hidden;
+            background-color: #000;
+            padding: 7px;
+            border-radius: 10px;
+            animation: neon-glow 2s infinite alternate;
+            transition: border-color 5s ease;
+            border: 3px solid #ff14d8; /* Color inicial */
+        }
+
+        @keyframes neon-glow {
+            0% {
+                box-shadow: 0 0 20px rgba(0, 255, 234, 0.7);
+                color: #00ffea;
+                text-shadow: 0 0 20px rgba(0, 255, 234, 0.8);
+                border-color: #00bfff; /* Azul */
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+                color: #ff69b4; /* Rosado */
+                text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+                border-color: #ff69b4; /* Rosado */
+            }
+            100% {
+                box-shadow: 0 0 20px rgba(0, 255, 234, 0.7);
+                color: #00ffea;
+                text-shadow: 0 0 20px rgba(0, 255, 234, 0.8);
+                border-color: #00bfff; /* Azul */
+            }
+        }
+        
+        .my-gallery-container .gallery-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #00ffea; /* Color del título */
+            text-shadow: 0 0 10px rgba(0, 255, 234, 0.8);
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        
+        .my-gallery-container .gallery {
+            display: flex;
+            transition: transform 0.5s ease;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .my-gallery-container .gallery img {
+            width: 100%;
+            transition: transform 0.5s ease;
+            border-radius: 10px;
+        }
+        
+        .my-gallery-container button.prev, .my-gallery-container button.next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            z-index: 1;
+        }
+        
+        .my-gallery-container button.prev {
+            left: 10px;
+            color: #555;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        .my-gallery-container button.next {
+            right: 10px;
+            color: #555;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .my-gallery-container button.prev:hover, .my-gallery-container button.next:hover {
+            color: #00ffea;
+            text-shadow: 0 0 20px rgba(0, 255, 234, 0.8);
+        }
+    </style>
+</head>
+<body class="my-gallery-container">
+    <div class="gallery-title">Mi Galería de Imágenes</div>
+    <div class="gallery-container">
+        <div class="gallery">
+            <img src="P1.jpg" alt="Image 1">
+            <img src="P2.jpg" alt="Image 2">
+            <img src="P3.jpg" alt="Image 3">
+            <!-- Agrega más imágenes según sea necesario -->
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.gallery img');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            if (index < 0) {
+                slideIndex = totalSlides - 1;
+            } else if (index >= totalSlides) {
+                slideIndex = 0;
+            } else {
+                slideIndex = index;
+            }
+
+            slides.forEach((slide, idx) => {
+                slide.style.transform = `translateX(${-slideIndex * 100}%)`;
+            });
+        }
+
+        function moveSlide(n) {
+            showSlide(slideIndex + n);
+        }
+
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
+
+        showSlide(slideIndex);
+    </script>
+</body>
+</html>

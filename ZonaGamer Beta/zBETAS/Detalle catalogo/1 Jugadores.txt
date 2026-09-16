@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamer Style Banners</title>
+    <style>
+        .main-container {
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e1e;
+            color: #fff;
+            text-align: center;
+            padding: 40px;
+            margin: 0 50px; /* Añadir más margen a la izquierda y derecha */
+            border: 2px solid #00ffff; /* Borde del contenedor */
+            border-radius: 10px; /* Bordes redondeados del contenedor */
+        }
+
+        .main-container h1 {
+            font-size: 2.5em;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+            margin-bottom: 20px;
+        }
+
+        .main-container p {
+            font-size: 1.2em;
+            color: #cccccc;
+            margin-bottom: 40px;
+        }
+
+        .banner-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 1px; /* Reducir espacio entre imágenes */
+        }
+
+        .banner {
+            width: 22%; /* Hacer las imágenes más pequeñas */
+            position: relative;
+            overflow: hidden;
+            border: 2px solid;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .banner img {
+            width: 100%;
+            display: block;
+        }
+
+        .banner:hover {
+            transform: scale(1.05);
+        }
+
+        .banner:first-child {
+            border-color: #00ffff;
+        }
+
+        .banner:nth-child(2), .banner:nth-child(3), .banner:nth-child(4) {
+            border-color: #ff00ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>Bienvenido a Nuestro Sitio Gamer</h1>
+        <p>Disfruta de las mejores imágenes y contenido al estilo gamer.</p>
+
+        <div class="banner-container">
+            <div class="banner">
+                <img src="imagen1.jpg" alt="Imagen 1">
+            </div>
+            <div class="banner">
+                <img src="imagen2.jpg" alt="Imagen 2">
+            </div>
+            <div class="banner">
+                <img src="imagen3.jpg" alt="Imagen 3">
+            </div>
+            <div class="banner">
+                <img src="imagen4.jpg" alt="Imagen 4">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

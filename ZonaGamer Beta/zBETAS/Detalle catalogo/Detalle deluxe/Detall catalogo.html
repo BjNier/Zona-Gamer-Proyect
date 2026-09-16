@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilo Gamer</title>
+    <style>
+        /* Estilos específicos para el contenedor gamer */
+        .gamer-container {
+            background-color: #0d0d0d;
+            color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .gamer-container h1, .gamer-container h2, .gamer-container p {
+            margin: 20px 0;
+        }
+        .gamer-container h1 {
+            color: #ff69b4;
+            font-size: 3em;
+            text-shadow: 2px 2px #00f;
+        }
+        .gamer-container h2 {
+            color: #00f;
+            font-size: 2em;
+            text-shadow: 2px 2px #ff69b4;
+        }
+        .gamer-container .video {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+        .gamer-container .video video {
+            width: 100%;
+            max-width: 800px;
+            border: 2px solid #00f;
+            box-shadow: 0 0 20px #ff69b4;
+        }
+        .gamer-container .description {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid #ff69b4;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #ff69b4;
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px; /* Margen entre la descripción y la galería */
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .gamer-container .description:hover {
+            border-color: #00f;
+            box-shadow: 0 0 30px #00f;
+        }
+        .gamer-container .description p {
+            margin: 10px 0;
+            color: #f0f0f0;
+        }
+        .gamer-container .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+        .gamer-container .gallery img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4 / 3; /* Mantener relación de aspecto 4:3 */
+            object-fit: cover; /* Ajustar sin distorsión */
+            border: 3px solid #ff69b4;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #ff69b4;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+        .gamer-container .gallery img:hover {
+            transform: scale(1.1);
+            border-color: #00f;
+            box-shadow: 0 0 30px #00f;
+        }
+    </style>
+</head>
+<body>
+    <div class="gamer-container">
+        <h1>Título Principal</h1>
+        <div class="video">
+            <video controls>
+                <source src="video.mp4" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+        </div>
+        <h2>Galería de Capturas</h2>
+        <div class="description">
+            <p>Esta es una breve descripción del contenido mostrado anteriormente. Se puede hablar del video, de las capturas, o de cualquier otro tema relacionado.</p>
+        </div>
+        <div class="gallery">
+            <img src="captura1.jpg" alt="Captura 1">
+            <img src="captura2.jpg" alt="Captura 2">
+            <img src="captura3.jpg" alt="Captura 3">
+            <img src="captura4.jpg" alt="Captura 4">
+        </div>
+    </div>
+</body>
+</html>

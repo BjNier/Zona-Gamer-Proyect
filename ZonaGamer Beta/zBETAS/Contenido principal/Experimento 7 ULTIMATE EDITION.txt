@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto con Imagen a la Derecha</title>
+    <style>
+        body.unique-body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Evita el desplazamiento horizontal */
+            scroll-behavior: smooth; /* Desplazamiento suave */
+        }
+        .unique-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            min-height: 100vh; /* Altura mínima del viewport */
+            color: white;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .unique-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            transition: background 0.5s;
+        }
+        .unique-section:hover::after {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        .unique-section .unique-text, .unique-section .unique-image {
+            position: relative;
+            z-index: 1;
+        }
+        .unique-section .unique-text {
+            flex: 1;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        .unique-section .unique-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .unique-section .unique-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.5s ease, opacity 1s ease-in-out;
+            /* Agrega márgenes a las imágenes */
+            margin-left: 20px; /* Margen izquierdo */
+            margin-right: 20px; /* Margen derecho */
+        }
+        .unique-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .unique-section.active .unique-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .unique-section.active .unique-image img {
+            transform: scale(1.05);
+        }
+        .unique-section:nth-child(1) {
+            background-image: url('F3.jpg');
+        }
+        .unique-section:nth-child(2) {
+            background-image: url('F2.jpg');
+            flex-direction: row-reverse;
+        }
+        .unique-section:nth-child(3) {
+            background-image: url('F4.jpg');
+            flex-direction: row;
+        }
+
+        /* Galería */
+        .gallery {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .gallery img {
+            position: absolute;
+            max-width: 100%;
+            height: auto;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .gallery img.active {
+            opacity: 1;
+        }
+
+        /* Fondo de galería de la sección 1 */
+        .background-gallery {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .background-gallery img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .background-gallery img.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="unique-body">
+    <div class="unique-section active" id="unique-section1">
+        <div class="background-gallery">
+            <img src="F1.jpg" alt="Fondo 1" class="active">
+            <img src="F2.jpg" alt="Fondo 2">
+            <img src="F3.jpg" alt="Fondo 3">
+        </div>
+        <div class="unique-text">
+            <h1>Título 1</h1>
+            <p>Este es el primer párrafo de texto. Puedes agregar más contenido aquí según sea necesario.</p>
+        </div>
+        <div class="unique-image">
+            <div class="gallery">
+                <img src="F5.jpg" alt="Imagen 1" class="active">
+                <img src="F4.jpg" alt="Imagen 2">
+                <img src="F3.jpg" alt="Imagen 3">
+                <img src="F2.jpg" alt="Imagen 4">
+            </div>
+        </div>
+    </div>
+
+    <div class="unique-section" id="unique-section2">
+        <div class="unique-text">
+            <h1>Título 2</h1>
+            <p>Este es el segundo párrafo de texto. Puedes agregar más contenido aquí según sea necesario.</p>
+        </div>
+        <div class="unique-image">
+            <div class="gallery">
+                <img src="F1.jpg" alt="Imagen 5" class="active">
+                <img src="F2.jpg" alt="Imagen 6">
+                <img src="F3.jpg" alt="Imagen 7">
+            </div>
+        </div>
+    </div>
+
+    <div class="unique-section" id="unique-section3">
+        <div class="unique-text">
+            <h1>Título 3</h1>
+            <p>Este es el tercer párrafo de texto. Puedes agregar más contenido aquí según sea necesario.</p>
+        </div>
+        <div class="unique-image">
+            <div class="gallery">
+                <img src="F4.jpg" alt="Imagen 8" class="active">
+                <img src="F5.jpg" alt="Imagen 9">
+                <img src="F1.jpg" alt="Imagen 10">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll('.unique-section');
+            let currentSectionIndex = 0;
+
+            function setActiveSection(index) {
+                sections.forEach((section, idx) => {
+                    if (idx === index) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+            }
+
+            // Set initial active section based on scroll position
+            function setInitialSection() {
+                const scrollPosition = window.scrollY;
+                const windowHeight = window.innerHeight;
+
+                sections.forEach((section, index) => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+
+                    if (scrollPosition >= sectionTop - windowHeight / 2 && scrollPosition < sectionTop + sectionHeight / 2) {
+                        currentSectionIndex = index;
+                    }
+                });
+
+                setActiveSection(currentSectionIndex);
+            }
+
+            setInitialSection();
+
+            window.addEventListener('scroll', () => {
+                setInitialSection();
+            });
+
+            window.addEventListener('wheel', (event) => {
+                if (event.deltaY < 0) {
+                    // Scrolling up
+                    currentSectionIndex = Math.max(currentSectionIndex - 1, 0);
+                } else {
+                    // Scrolling down
+                    currentSectionIndex = Math.min(currentSectionIndex + 1, sections.length - 1);
+                }
+
+                setActiveSection(currentSectionIndex);
+
+                // Prevent default scroll behavior
+                event.preventDefault();
+            });
+
+            window.addEventListener('resize', () => {
+                setInitialSection();
+            });
+
+            // Galería de imágenes para la sección 1
+            const galleryImages1 = document.querySelectorAll('#unique-section1 .gallery img');
+            let currentImageIndex1 = 0;
+
+            function changeImage1() {
+                galleryImages1[currentImageIndex1].classList.remove('active');
+                currentImageIndex1 = (currentImageIndex1 + 1) % galleryImages1.length;
+                galleryImages1[currentImageIndex1].classList.add('active');
+            }
+
+            setInterval(changeImage1, 3000); // Cambia de imagen cada 3 segundos
+
+            // Galería de imágenes para la sección 2
+            const galleryImages2 = document.querySelectorAll('#unique-section2 .gallery img');
+            let currentImageIndex2 = 0;
+
+            function changeImage2() {
+                galleryImages2[currentImageIndex2].classList.remove('active');
+                currentImageIndex2 = (currentImageIndex2 + 1) % galleryImages2.length;
+                galleryImages2[currentImageIndex2].classList.add('active');
+            }
+
+            setInterval(changeImage2, 3000); // Cambia de imagen cada 3 segundos
+
+            // Galería de imágenes para la sección 3
+            const galleryImages3 = document.querySelectorAll('#unique-section3 .gallery img');
+            let currentImageIndex3 = 0;
+
+            function changeImage3() {
+                galleryImages3[currentImageIndex3].classList.remove('active');
+                currentImageIndex3 = (currentImageIndex3 + 1) % galleryImages3.length;
+                galleryImages3[currentImageIndex3].classList.add('active');
+            }
+
+            setInterval(changeImage3, 3000); // Cambia de imagen cada 3 segundos
+
+            // Fondo de galería de la sección 1
+            const backgroundGalleryImages = document.querySelectorAll('.background-gallery img');
+            let currentBackgroundImageIndex = 0;
+
+            function changeBackgroundImage() {
+                backgroundGalleryImages[currentBackgroundImageIndex].classList.remove('active');
+                currentBackgroundImageIndex = (currentBackgroundImageIndex + 1) % backgroundGalleryImages.length;
+                backgroundGalleryImages[currentBackgroundImageIndex].classList.add('active');
+            }
+
+            setInterval(changeBackgroundImage, 5000); // Cambia de imagen de fondo cada 5 segundos
+        });
+    </script>
+</body>
+</html>

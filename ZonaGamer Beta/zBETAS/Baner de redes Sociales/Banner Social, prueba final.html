@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contenedor de Redes Sociales</title>
+  <style>
+    /* Estilos generales */
+    .social-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      background-color: black;
+      border-top: 5px solid pink; /* Color inicial del borde */
+      animation: borderAnimation 10s infinite alternate;
+      margin-top: 0px; /* Añade espacio antes del contenedor */
+    }
+    .social-top {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .social-left {
+      width: 20%;
+      text-align: center;
+    }
+    .social-center {
+      width: 60%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-left: 100px;
+      margin-top: 50px;
+    }
+    .social-right {
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-end;
+      margin-right: 70px;
+      margin-top: 20px;
+    }
+    .social-bottom {
+      width: 100%;
+      margin-top: 10px;
+    }
+    .social-bottom p {
+      text-align: justify;
+      margin: 0;
+      font-size: 14px;
+      color: white;
+      font-family: 'Roboto Mono', monospace;
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+    .social-h2 {
+      margin: 0;
+      color: white;
+      text-align: left;
+      font-size: 35px;
+      margin-left: 30px;
+      font-family: 'Roboto Mono', monospace;
+    }
+    .social-p {
+      margin: 0;
+      color: white;
+      text-align: justify;
+      font-size: 15px;
+      margin-left: 70px;
+      font-family: 'Roboto Mono', monospace;
+    }
+    .social-logo {
+      width: 60px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .social-logo-center {
+      width: 200px;
+    }
+
+    @keyframes borderAnimation {
+      0% {
+        border-color: pink;
+      }
+      50% {
+        border-color: blue;
+      }
+      100% {
+        border-color: pink;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="content">
+  <!-- Contenedor de redes sociales -->
+  <div class="social-container">
+    <div class="social-top">
+      <div class="social-left">
+        <h2 class="social-h2">ENCUENTRANOS</h2>
+        <p class="social-p"><br><strong>LOCAL: </strong>La Merced 694<br><br>
+        <strong>CONTACTO: </strong>+51 921613631<br><br>
+        <strong>EMAIL: </strong>zonagamer@gmail.com</p>
+      </div>
+      <div class="social-center">
+        <a href="pagina1.html"><img src="Y001.png" alt="Logo 1" class="social-logo social-logo-center"></a>
+        <a href="pagina2.html"><img src="Y002.png" alt="Logo 2" class="social-logo social-logo-center"></a>
+        <a href="pagina3.html"><img src="Y003.png" alt="Logo 3" class="social-logo social-logo-center"></a>
+      </div>
+      <div class="social-right">
+        <a href="pagina4.html"><img src="Y011.png" alt="Logo 4" class="social-logo"></a>
+        <a href="pagina5.html"><img src="Y012.png" alt="Logo 5" class="social-logo"></a>
+      </div>
+    </div>
+    <div class="social-bottom">
+      <p class="social-p">"[2024]© Todos los derechos reservados. Steam y el logotipo de Steam son marcas comerciales y/o 
+        marcas registradas de Valve Corporation en los EE.UU. y/o en otros países. 'PS4', 'PS5', 'PlayStation', 'PlayStation 
+        Family Mark', 'DualShock' y 'SIXAXIS' son marcas comerciales o marcas registradas de Sony Interactive Entertainment Inc. 
+        PlayStation 4 y PlayStation 5 son consolas de videojuegos desarrolladas y producidas por Sony Interactive Entertainment Inc., 
+        que también posee los derechos sobre las marcas asociadas. Todas las demás marcas son propiedad de sus respectivos dueños."</p>
+    </div>
+  </div>
+
+
+
+</body>
+</html>

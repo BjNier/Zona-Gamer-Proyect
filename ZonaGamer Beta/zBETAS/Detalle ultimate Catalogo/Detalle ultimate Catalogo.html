@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Gamer Style</title>
+    <style>
+        body {
+            background-color: #000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: blink 1s infinite alternate;
+        }
+        @keyframes blink {
+            0% {
+                color: #f08bd3;
+                text-shadow: 2px 2px 5px #00b0f0;
+            }
+            50% {
+                color: #00b0f0;
+                text-shadow: 2px 2px 5px #f08bd3;
+            }
+        }
+        .video-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+        .video-container video {
+            width: 100%;
+            border: 5px solid #f08bd3;
+            box-shadow: 0 0 15px #00b0f0;
+        }
+        .description {
+            font-size: 1.2em;
+            color: #f08bd3;
+            margin-top: 20px;
+            padding: 10px;
+            border: 2px solid #00b0f0;
+            box-shadow: 0 0 10px #f08bd3;
+            transition: all 0.5s;
+        }
+        .description:hover {
+            color: #00b0f0;
+            border-color: #f08bd3;
+            box-shadow: 0 0 10px #00b0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">Gamer Style Video</h1>
+    <div class="video-container">
+        <video controls>
+            <source src="video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="description">
+        Escribe aquí tu descripción.
+    </div>
+</body>
+</html>

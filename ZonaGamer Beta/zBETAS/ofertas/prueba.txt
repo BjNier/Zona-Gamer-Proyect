@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Ofertas Gamer</title>
+    <style>
+
+        .gamer-catalog {
+            background-color: #121212;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .gamer-catalog h1 {
+            font-family: 'Press Start 2P', cursive;
+            color: #00ffff;
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .catalogo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .combo {
+            border: 2px solid;
+            border-image-slice: 1;
+            border-image-source: linear-gradient(45deg, #ff00ff, #00ffff);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, border-image-source 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+        }
+        .combo:hover {
+            transform: scale(1.05);
+            border-image-source: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff, #00ffff);
+            box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+        }
+        .combo img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .combo img:hover {
+            transform: scale(1.1);
+        }
+        .combo h2 {
+            margin: 10px 0;
+            color: #00ffff;
+        }
+        .combo p {
+            margin: 10px 0;
+        }
+        .combo .price {
+            color: #ff00ff;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="gamer-catalog">
+        <h1>Aprovecha las ofertas de manera interactiva</h1>
+        <div class="catalogo">
+            <div class="combo">
+                <img src="https://via.placeholder.com/200" alt="Combo 1">
+                <h2>Combo Gamer 1</h2>
+                <p>Incluye: Teclado, Ratón, Auriculares</p>
+                <p class="price">$99.99</p>
+            </div>
+            <div class="combo">
+                <img src="https://via.placeholder.com/200" alt="Combo 2">
+                <h2>Combo Gamer 2</h2>
+                <p>Incluye: Monitor, Teclado, Ratón</p>
+                <p class="price">$199.99</p>
+            </div>
+            <div class="combo">
+                <img src="https://via.placeholder.com/200" alt="Combo 3">
+                <h2>Combo Gamer 3</h2>
+                <p>Incluye: Silla, Teclado, Auriculares</p>
+                <p class="price">$299.99</p>
+            </div>
+            <div class="combo">
+                <img src="https://via.placeholder.com/200" alt="Combo 4">
+                <h2>Combo Gamer 4</h2>
+                <p>Incluye: Silla, Monitor, Ratón</p>
+                <p class="price">$399.99</p>
+            </div>
+            <!-- Agrega más combos aquí -->
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Game Catalog Styles</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        .video-game-catalog {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .video-game-catalog .search-container {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .video-game-catalog #search-bar {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+            border: 2px solid #ff00ff;
+            background-color: #0f0f0f;
+            color: #ff00ff;
+            outline: none;
+            transition: border-color 0.5s, color 0.5s;
+        }
+
+        .video-game-catalog #search-bar:focus {
+            border-color: #00ffff;
+            color: #00ffff;
+        }
+
+        .video-game-catalog .catalog-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .video-game-catalog .catalog-item {
+            width: 30%;
+            box-sizing: border-box;
+            margin: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.5s, color 0.5s;
+            border: 2px solid #ff00ff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #ff00ff;
+        }
+
+        .video-game-catalog .catalog-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #00ffff;
+            border-color: #00ffff;
+        }
+
+        .video-game-catalog .catalog-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+        }
+
+        .video-game-catalog .catalog-item p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #ff00ff;
+        }
+
+        .video-game-catalog .catalog-item:hover p {
+            color: #00ffff;
+        }
+
+        .video-game-catalog .announcement {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 20px; /* Tamaño de fuente más grande */
+            color: #ff00ff;
+            animation: neonText 2s linear infinite alternate;
+        }
+
+        @keyframes neonText {
+            0%, 100% {
+                color: #ff00ff;
+            }
+            50% {
+                color: #00ffff;
+            }
+        }
+
+        .video-game-catalog a {
+            text-decoration: none;
+            color: #ff00ff;
+            transition: color 0.5s;
+        }
+
+        .video-game-catalog a:hover {
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+    </style>
+</head>
+<body class="video-game-catalog">
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Search for a video game...">
+    </div>
+    <div class="catalog-container" id="catalog">
+        <div class="catalog-item" data-name="The Legend of Zelda">
+            <a href="zelda.html">
+                <img src="102.jpg" alt="The Legend of Zelda">
+            </a>
+            <p>The Legend of Zelda</p>
+        </div>
+        <div class="catalog-item" data-name="Super Mario">
+            <a href="mario.html">
+                <img src="102.jpg" alt="Super Mario">
+            </a>
+            <p>Super Mario</p>
+        </div>
+        <div class="catalog-item" data-name="Minecraft">
+            <a href="minecraft.html">
+                <img src="102.jpg" alt="Minecraft">
+            </a>
+            <p>Minecraft</p>
+        </div>
+        <!-- Añadir más elementos según sea necesario -->
+    </div>
+
+    <div class="announcement">
+        More games coming soon!
+    </div>
+
+    <script>
+        document.getElementById('search-bar').addEventListener('keyup', function() {
+            let searchQuery = this.value.toLowerCase();
+            let catalogItems = document.querySelectorAll('.catalog-item');
+            
+            catalogItems.forEach(function(item) {
+                let itemName = item.getAttribute('data-name').toLowerCase();
+                if (itemName.includes(searchQuery)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

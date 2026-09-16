@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Consolas Integrado</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #121212;
+            color: #fff;
+        }
+        .console-room {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 90vw;
+            margin: auto;
+        }
+        .console-box {
+            background-color: #1f1f1f;
+            border: 2px solid #00bfff;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 15px #ff00ff;
+            transition: transform 0.3s;
+            font-size: 1.2em;
+        }
+        .console-box:hover {
+            transform: scale(1.05);
+        }
+        .console-time {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #00bfff;
+            text-shadow: 0 0 5px #ff00ff;
+        }
+        .console-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .console-buttons button {
+            padding: 5px;
+            background: linear-gradient(45deg, #00bfff, #ff00ff);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: background 0.3s;
+        }
+        .console-buttons button:hover {
+            background: linear-gradient(45deg, #ff00ff, #00bfff);
+        }
+        .console-number {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            color: #ff00ff;
+        }
+
+        @media (max-width: 768px) {
+            .console-room {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .console-box {
+                padding: 10px;
+                font-size: 1em;
+            }
+            .console-time {
+                font-size: 1.5em;
+            }
+            .console-buttons button {
+                font-size: 0.7em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .console-room {
+                grid-template-columns: 1fr;
+            }
+            .console-box {
+                padding: 5px;
+                font-size: 0.8em;
+            }
+            .console-time {
+                font-size: 1.2em;
+            }
+            .console-buttons button {
+                font-size: 0.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="simuladorConsolas"></div>
+
+    <script>
+        (function() {
+            let times = {
+                time1: 0,
+                time2: 0,
+                time3: 0,
+                time4: 0,
+                time5: 0,
+                time6: 0,
+                time7: 0,
+                time8: 0,
+            };
+
+            let freeTimers = {
+                time1: false,
+                time2: false,
+                time3: false,
+                time4: false,
+                time5: false,
+                time6: false,
+                time7: false,
+                time8: false,
+            };
+
+            function updateDisplay() {
+                for (let id in times) {
+                    let minutes = Math.floor(times[id] / 60);
+                    let seconds = times[id] % 60;
+                    document.getElementById(id).textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                }
+            }
+
+            function addTime(id) {
+                times[id] += 30 * 60; // Añadir 30 minutos
+                updateDisplay();
+            }
+
+            function reduceTime(id) {
+                times[id] = Math.max(times[id] - 30 * 60, 0); // Reducir 30 minutos, asegurando que no sea menor a 0
+                updateDisplay();
+            }
+
+            function startFreeTime(id) {
+                freeTimers[id] = !freeTimers[id];
+                document.querySelector(`#${id}`).parentElement.querySelector('.console-buttons button:last-child').textContent = freeTimers[id] ? "Detener" : "Libre";
+            }
+
+            setInterval(() => {
+                for (let id in freeTimers) {
+                    if (freeTimers[id]) {
+                        times[id]++;
+                        updateDisplay();
+                    }
+                }
+            }, 1000);
+
+            function createConsole(id, number) {
+                return `
+                    <div class="console-box" id="console${number}">
+                        <div class="console-number">${number}</div>
+                        <div class="console-time" id="time${number}">00:00</div>
+                        <div class="console-buttons">
+                            <button onclick="addTime('time${number}')">Aumentar 30m</button>
+                            <button onclick="reduceTime('time${number}')">Reducir 30m</button>
+                            <button onclick="startFreeTime('time${number}')">Libre</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            document.getElementById('simuladorConsolas').innerHTML = `
+                <div class="console-room">
+                    ${createConsole('time1', 1)}
+                    ${createConsole('time2', 2)}
+                    ${createConsole('time3', 3)}
+                    ${createConsole('time4', 4)}
+                    ${createConsole('time5', 5)}
+                    ${createConsole('time6', 6)}
+                    ${createConsole('time7', 7)}
+                    ${createConsole('time8', 8)}
+                </div>
+            `;
+        })();
+    </script>
+</body>
+</html>

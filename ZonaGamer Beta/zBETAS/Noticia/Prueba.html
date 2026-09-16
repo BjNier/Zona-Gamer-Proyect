@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias Gamers</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .noticias-gamers {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .noticias-gamers h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+            }
+            to {
+                text-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+            }
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #ff00ff, #00ffff);
+            animation: slide 2s infinite alternate;
+        }
+
+        @keyframes slide {
+            from {
+                background-position: 0% 50%;
+            }
+            to {
+                background-position: 100% 50%;
+            }
+        }
+
+        .noticia {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            padding-left: 70px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .noticia:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+        }
+
+        .noticia::before {
+            content: attr(data-date);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 140px;
+            padding: 10px;
+            background: linear-gradient(to right, #ff00ff, #00ffff);
+            color: #ffffff;
+            text-align: center;
+            border-radius: 0 15px 15px 0;
+            font-weight: bold;
+            font-size: 12px;
+            text-shadow: 0 0 5px #000, 0 0 10px #000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .noticia img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .noticia img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+        }
+
+        .contenido-noticia {
+            padding: 20px;
+        }
+
+        .contenido-noticia h2 {
+            margin: 0 0 10px;
+            color: #00ffff;
+            font-size: 18px;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .contenido-noticia p {
+            margin: 0 0 10px;
+            color: #cccccc;
+        }
+
+        .contenido-noticia a {
+            color: #ff00ff;
+            text-decoration: none;
+            font-weight: bold;
+            text-shadow: 0 0 5px #ff00ff;
+            transition: color 0.3s;
+        }
+
+        .contenido-noticia a:hover {
+            text-decoration: underline;
+            color: #00ffff;
+        }
+
+        .noticia-destacada {
+            border: 5px solid #ffff00;
+            box-shadow: 0 0 20px #ffff00;
+            padding: 40px 70px;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .noticia-destacada:hover {
+            box-shadow: 0 0 30px #ffff00;
+        }
+
+        .noticia-destacada img {
+            width: 600px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+        }
+
+        .noticia-destacada .contenido-noticia {
+            padding-left: 0;
+            text-align: center;
+        }
+
+        .noticia-destacada .contenido-noticia h2 {
+            font-size: 24px;
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+        }
+
+        .noticia-destacada .contenido-noticia p.descripcion {
+            margin-top: 10px;
+            color: #ffff00;
+            font-size: 16px;
+            text-shadow: 0 0 5px #000;
+        }
+
+        .noticia-destacada .contenido-noticia a {
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        .noticia-destacada .contenido-noticia a:hover {
+            color: #0000ff;
+        }
+    </style>
+</head>
+<body>
+    <section class="noticias-gamers">
+        <h1>Últimas Noticias Gamers</h1>
+        <div class="timeline">
+            <div class="noticia noticia-destacada" data-date="24 JUN 2024">
+                <img src="ruta_a_imagen_destacada.jpg" alt="Evento Activo">
+                <div class="contenido-noticia">
+                    <h2>¡Evento Gamer Activo!</h2>
+                    <p class="descripcion">Este evento contará con torneos, charlas de desarrolladores y muchas sorpresas más. ¡No te lo pierdas!</p>
+                    <p>Únete a nuestro evento anual para gamers y disfruta de las últimas novedades...</p>
+                    <a href="enlace_a_evento.html">Leer más</a>
+                </div>
+            </div>
+            <div class="noticia" data-date="23 JUN 2024">
+                <img src="ruta_a_imagen1.jpg" alt="Noticia 1">
+                <div class="contenido-noticia">
+                    <h2>Título de la Noticia 1</h2>
+                    <p>Descripción breve de la noticia 1...</p>
+                    <a href="enlace_a_noticia1.html">Leer más</a>
+                </div>
+            </div>
+            <div class="noticia" data-date="22 JUN 2024">
+                <img src="ruta_a_imagen2.jpg" alt="Noticia 2">
+                <div class="contenido-noticia">
+                    <h2>Título de la Noticia 2</h2>
+                    <p>Descripción breve de la noticia 2...</p>
+                    <a href="enlace_a_noticia2.html">Leer más</a>
+                </div>
+            </div>
+            <!-- Agrega más noticias según sea necesario -->
+        </div>
+    </section>
+</body>
+</html>

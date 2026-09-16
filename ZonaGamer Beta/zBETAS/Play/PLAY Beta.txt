@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronómetros en cuadrados</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .square {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #000;
+            flex-direction: column;
+        }
+        .timer {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .inputTime {
+            width: 70px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cuadrados con cronómetros -->
+        <div class="square">
+            <div class="timer" id="timer1">00:00:00</div>
+            <input type="time" class="inputTime" id="inputTime1">
+            <button onclick="startTimer('timer1', 'inputTime1')">Start</button>
+        </div>
+        <div class="square">
+            <div class="timer" id="timer2">00:00:00</div>
+            <input type="time" class="inputTime" id="inputTime2">
+            <button onclick="startTimer('timer2', 'inputTime2')">Start</button>
+        </div>
+        <div class="square">
+            <div class="timer" id="timer3">00:00:00</div>
+            <input type="time" class="inputTime" id="inputTime3">
+            <button onclick="startTimer('timer3', 'inputTime3')">Start</button>
+        </div>
+        <div class="square">
+            <div class="timer" id="timer4">00:00:00</div>
+            <input type="time" class="inputTime" id="inputTime4">
+            <button onclick="startTimer('timer4', 'inputTime4')">Start</button>
+        </div>
+        <div class="square">
+            <div class="timer" id="timer5">00:00:00</div>
+            <input type="time" class="inputTime" id="inputTime5">
+            <button onclick="startTimer('timer5', 'inputTime5')">Start</button>
+        </div>
+        <div class="square">
+            <div class="timer" id="timer6">00:00:00</div>
+            <input type="time" class="inputTime" id="inputTime6">
+            <button onclick="startTimer('timer6', 'inputTime6')">Start</button>
+        </div>
+        <div class="square">
+            <div class="timer" id="timer7">00:00:00</div>
+            <input type="time" class="inputTime" id="inputTime7">
+            <button onclick="startTimer('timer7', 'inputTime7')">Start</button>
+        </div>
+        <div class="square">
+            <div class="timer" id="timer8">00:00:00</div>
+            <input type="time" class="inputTime" id="inputTime8">
+            <button onclick="startTimer('timer8', 'inputTime8')">Start</button>
+        </div>
+
+        <!-- Cuadrados sin cronómetros -->
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+    </div>
+
+    <script>
+        function startTimer(timerId, inputId) {
+            let timerElement = document.getElementById(timerId);
+            let inputElement = document.getElementById(inputId);
+            let timeParts = inputElement.value.split(':');
+            let seconds = (+timeParts[0]) * 3600 + (+timeParts[1]) * 60;
+
+            const interval = setInterval(() => {
+                if (seconds <= 0) {
+                    clearInterval(interval);
+                    timerElement.textContent = "00:00:00";
+                    return;
+                }
+
+                seconds--;
+                let hrs = Math.floor(seconds / 3600);
+                let mins = Math.floor((seconds % 3600) / 60);
+                let secs = seconds % 60;
+
+                timerElement.textContent = 
+                    (hrs < 10 ? "0" : "") + hrs + ":" +
+                    (mins < 10 ? "0" : "") + mins + ":" +
+                    (secs < 10 ? "0" : "") + secs;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
